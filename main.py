@@ -75,7 +75,7 @@ y_pred_classes = [np.argmax(element) for element in y_pred]
 print("Classification Report: \n", classification_report(y_test, y_pred_classes))
 
 plt.figure(figsize=(10, 10))
-sns.heatmap(confusion_matrix(y_test, y_pred_classes), annot=True)
+sns.heatmap(confusion_matrix(y_test, y_pred_classes), annot=True, fmt="d")
 
 plt.ylabel("Actual")
 plt.xlabel("Predicted")
@@ -155,7 +155,7 @@ datagen = ImageDataGenerator(
 # Train with data augmentation
 history = transfer_model.fit(
     datagen.flow(X_train, y_train, batch_size=32),
-    epochs=5,
+    epochs=10,
     validation_data=(X_test, y_test),
 )
 
